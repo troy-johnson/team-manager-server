@@ -1,0 +1,39 @@
+{
+  "name": "team-manager-server",
+  "version": "0.1.0",
+  "description": "Express server for team manager app.",
+  "repository": "https://github.com/troy-johnson/team-manager-server",
+  "author": "Troy Johnson <troy.johnson57@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node -- .",
+    "dev": "nodemon . --exec \"node -r dotenv/config -r @babel/register\"",
+    "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
+    "clean": "rimraf dist",
+    "lint": "eslint src/* test/*"
+  },
+  "main": "./src/index.js",
+  "keywords": [
+    "nodejs",
+    "bootstrap",
+    "express"
+  ],
+  "dependencies": {
+    "cors": "~2.8.5",
+    "dotenv": "~8.0.0",
+    "express": "^4.17.1",
+    "rimraf": "^2.6.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "~7.5.5",
+    "@babel/core": "~7.5.5",
+    "@babel/node": "~7.5.5",
+    "@babel/register": "~7.5.5",
+    "@babel/runtime": "~7.5.5",
+    "babel-preset-airbnb": "~4.0.1",
+    "eslint": "~6.1.0",
+    "eslint-config-airbnb-base": "~13.2.0",
+    "eslint-plugin-import": "~2.18.2",
+    "nodemon": "~1.19.1"
+  }
+}
