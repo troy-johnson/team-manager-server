@@ -1,4 +1,4 @@
-FROM node:10 AS base
+FROM node:10-alpine AS base
 
 WORKDIR /code
 
