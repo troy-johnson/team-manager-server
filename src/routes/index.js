@@ -1,9 +1,9 @@
-import game from './game';
 import player from './player';
-import season from './season';
+import team from './team';
+import event from './event';
 
 export default {
-  game,
   player,
-  season
+  team,
+  event
 };

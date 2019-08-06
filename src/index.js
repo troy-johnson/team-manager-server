@@ -11,9 +11,9 @@ const router = express.Router();
 app.use(cors());
 
 app.use('/', router);
-app.use('/game', routes.game);
 app.use('/player', routes.player);
-app.use('/season', routes.season);
+app.use('/team', routes.team);
+app.use('/event', routes.event);
 
 app.listen(port, () => {
   /* eslint-disable no-console */
