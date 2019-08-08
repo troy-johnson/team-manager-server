@@ -1,14 +1,12 @@
-FROM node:10-alpine AS base
+FROM node:10-alpine
 
 WORKDIR /code
 
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
 RUN npm install
 
 COPY . .
-
-FROM base
 
 RUN npm run build
 
