@@ -7,14 +7,10 @@ services:
       - '3000:3000'
     depends_on:
       - mysql
-    # environment:
-    #   - DATABASE_URL=mysql://todoapp@postgres/todos
   mysql:
     image: mysql:5.7
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
-      - MYSQL_USER=web
-      - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=team_manager
     volumes:
       - ./mysql-init:/docker-entrypoint-initdb.d
