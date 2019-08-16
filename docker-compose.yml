@@ -1,8 +1,16 @@
 version: '3.7'
 services:
-  app:
+  server:
+    container_name: server
     image: tjohnson/team-manager-server
+    env_file: .env
+    environment:
+      - DB_HOST=mysql
     build: .
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/dist
     ports:
       - '3000:3000'
     depends_on:
