@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { player } from '../controllers';
+import { user } from '../controllers';
 
 const router = Router();
 
 router.get('/', (req, res) => {
-  player.getAllPlayers(req, res);
+  user.getAllUsers(req, res);
 });
 
 export default router;
