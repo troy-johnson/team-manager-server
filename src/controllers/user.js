@@ -13,6 +13,28 @@ const getUser = (req, res) => {
   });
 };
 
+const upsertUser = (req, res) => {
+  const query = `INSERT INTO ${req.params.user_id}`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(403).send({ statusCode: 403, error: err });
+    } else {
+      res.status(200).send({ result });
+    }
+  });
+};
+
+const deleteUser = (req, res) => {
+  const query = `INSERT INTO ${req.params.user_id}`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(403).send({ statusCode: 403, error: err });
+    } else {
+      res.status(200).send({ result });
+    }
+  });
+};
+
 const getAllUsers = (_req, res) => {
   const query = 'SELECT * FROM user';
   db.query(query, (err, result) => {
@@ -46,4 +68,10 @@ const getUserPlayers = (req, res) => {
   });
 };
 
-export { getUser, getAllUsers, getUserPlayers };
+export {
+  getUser,
+  upsertUser,
+  deleteUser,
+  getAllUsers,
+  getUserPlayers,
+};

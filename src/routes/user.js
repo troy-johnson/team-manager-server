@@ -7,6 +7,14 @@ router.get('/:id', (req, res) => {
   user.getUser(req, res);
 });
 
+router.put('/:id', (req, res) => {
+  user.upsertUser(req, res);
+});
+
+router.delete('/:id', (req, res) => {
+  user.deleteUser(req, res);
+});
+
 router.get('/', (req, res) => {
   user.getAllUsers(req, res);
 });
