@@ -82,15 +82,15 @@ CREATE TABLE IF NOT EXISTS player_to_team (
   PRIMARY KEY (player_to_team_id)
 ) ENGINE=INNODB;
 
-CREATE TABLE IF NOT EXISTS team_to_event (
-  team_to_event_id char(36) NOT NULL,
+CREATE TABLE IF NOT EXISTS team_to_game (
+  team_to_game_id char(36) NOT NULL,
   home_team_id char(36) NOT NULL,
   away_team_id char(36) NOT NULL,
-  event_id char(36) NOT NULL,
+  game_id char(36) NOT NULL,
   FOREIGN KEY (home_team_id) REFERENCES team(team_id),
   FOREIGN KEY (away_team_id) REFERENCES team(team_id),
-  FOREIGN KEY (event_id) REFERENCES event(event_id),
-  PRIMARY KEY (team_to_event_id)
+  FOREIGN KEY (game_id) REFERENCES game(game_id),
+  PRIMARY KEY (team_to_game_id)
 ) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS player_to_game (
