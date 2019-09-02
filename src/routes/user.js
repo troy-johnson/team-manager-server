@@ -23,4 +23,8 @@ router.get('/players/:id', (req, res) => {
   user.getUserPlayers(req, res);
 });
 
+router.get('/teams/:id', (req, res) => {
+  user.getTeamsFromUser(req, res);
+});
+
 export default router;

@@ -2,39 +2,39 @@ USE team_manager;
 
 CREATE TABLE IF NOT EXISTS user (
   user_id char(36) NOT NULL,
-  user_first_name varchar(40) DEFAULT NULL,
-  user_last_name varchar(40) DEFAULT NULL,
-  user_full_name varchar(80) DEFAULT NULL,
-  user_phone_number varchar(30) DEFAULT NULL,
-  user_email_address varchar(40) NOT NULL,
+  first_name varchar(40) DEFAULT NULL,
+  last_name varchar(40) DEFAULT NULL,
+  full_name varchar(80) DEFAULT NULL,
+  phone_number varchar(30) DEFAULT NULL,
+  email_address varchar(40) NOT NULL,
   UNIQUE (user_email_address),
   PRIMARY KEY (user_id)
 ) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS player (
   player_id char(36) NOT NULL,
-  player_first_name varchar(40) DEFAULT NULL,
-  player_last_name varchar(40) DEFAULT NULL,
-  player_full_name varchar(40) DEFAULT NULL,
-  player_phone_number varchar(30) DEFAULT NULL,
-  player_email_address varchar(40) NOT NULL,
+  first_name varchar(40) DEFAULT NULL,
+  last_name varchar(40) DEFAULT NULL,
+  full_name varchar(40) DEFAULT NULL,
+  phone_number varchar(30) DEFAULT NULL,
+  email_address varchar(40) NOT NULL,
   emergency_contact_first_name varchar(40) DEFAULT NULL,
   emergency_contact_last_name varchar(40) DEFAULT NULL,
   emergency_contact_full_name varchar(80) DEFAULT NULL,
   emergency_contact_phone_number varchar(30) DEFAULT NULL,
   emergency_contact_email_address varchar(20) DEFAULT NULL,
-  UNIQUE (player_email_address),
+  UNIQUE (email_address),
   UNIQUE (emergency_contact_email_address),
   PRIMARY KEY (player_id)
 ) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS team (
   team_id char(36) NOT NULL,
-  team_logo text(128) DEFAULT NULL,
-  team_name varchar(80) NOT NULL,
-  team_sport varchar(40) NOT NULL,
-  team_primary_color varchar(20) DEFAULT NULL,
-  team_secondary_color varchar(20) DEFAULT NULL,
+  logo text(128) DEFAULT NULL,
+  name varchar(80) NOT NULL,
+  sport varchar(40) NOT NULL,
+  primary_color varchar(20) DEFAULT NULL,
+  secondary_color varchar(20) DEFAULT NULL,
   PRIMARY KEY (team_id)
 ) ENGINE=INNODB;
 
@@ -42,8 +42,8 @@ CREATE TABLE IF NOT EXISTS game (
   game_id char(36) NOT NULL,
   location_name varchar(80) NOT NULL,
   location_address varchar(80) DEFAULT NULL,
-  game_start_date datetime NOT NULL,
-  game_end_date datetime NOT NULL,
+  start_date datetime NOT NULL,
+  end_date datetime NOT NULL,
   away_team varchar(40) NOT NULL,
   away_team_goals int DEFAULT 0,
   home_team varchar(40) NOT NULL,
@@ -53,10 +53,10 @@ CREATE TABLE IF NOT EXISTS game (
 
 CREATE TABLE IF NOT EXISTS event (
   event_id char(36) NOT NULL,
-  event_type varchar(40) NOT NULL,
-  event_start_date datetime NOT NULL,
-  event_end_date datetime NOT NULL,
-  event_organizer varchar(40) NOT NULL,
+  type varchar(40) NOT NULL,
+  start_date datetime NOT NULL,
+  end_date datetime NOT NULL,
+  organizer varchar(40) NOT NULL,
   PRIMARY KEY (event_id)
 ) ENGINE=INNODB;
 
