@@ -21,9 +21,13 @@ app.use('/player', routes.player);
 app.use('/team', routes.team);
 app.use('/event', routes.event);
 
-app.listen(port, () => {
+export const startServer = () => app.listen(port, () => {
   /* eslint-disable no-console */
   console.log(`Server running on port ${port}`);
 });
+
+if (require.main === module) {
+  startServer();
+}
 
 export default app;
