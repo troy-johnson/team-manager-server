@@ -5,10 +5,10 @@ on: [push]
 jobs:
 
   build:
- 
     runs-on: ubuntu-latest
- 
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag team-manager-server:$(date +%s)
+      run: docker build . --file Dockerfile --tag team-manager-server:dev
+    - name: Run unit tests in Docker
+      run: docker run --rm --entrypoint=npm team-manager-server:dev test
