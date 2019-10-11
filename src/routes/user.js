@@ -4,27 +4,53 @@ import { user } from '../controllers';
 const router = Router();
 
 router.get('/:id', (req, res) => {
-  user.getUser(req, res);
+  const { id } = req.params;
+  user.getUser(id)
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          message: `user with id ${id} not found`
+        });
+      }
+
+      return res.json(result);
+    });
 });
 
 router.put('/:id', (req, res) => {
-  user.upsertUser(req, res);
+  const data = {
+    userID: req.body.userID,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    fullName: req.body.fullName,
+    phone: req.body.phone,
+    email: req.body.email,
+  };
+  user.insertUser(data)
+    .then(() => res.status(201).end());
 });
 
 router.delete('/:id', (req, res) => {
-  user.deleteUser(req, res);
+  const { id } = req.params;
+  user.deleteUser(id)
+    .then(() => res.status(204).end());
 });
 
-router.get('/', (req, res) => {
-  user.getAllUsers(req, res);
+router.get('/', (_req, res) => {
+  user.getAllUsers()
+    .then((users) => res.json(users));
 });
 
-router.get('/players/:id', (req, res) => {
-  user.getUserPlayers(req, res);
+router.get('/:id/players', (req, res) => {
+  const { id } = req.params;
+  user.getUserPlayers(id)
+    .then((players) => res.json(players));
 });
 
-router.get('/teams/:id', (req, res) => {
-  user.getTeamsFromUser(req, res);
+router.get('/:id/teams', (req, res) => {
+  const { id } = req.params;
+  user.getTeamsFromUser(id)
+    .then((teams) => res.json(teams));
 });
 
 export default router;

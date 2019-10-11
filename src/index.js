@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import routes from './routes';
 
+import db from './config';
+
 dotenv.config();
 
 const port = 3000;
@@ -27,7 +29,14 @@ export const startServer = () => app.listen(port, () => {
 });
 
 if (require.main === module) {
-  startServer();
+  const server = startServer();
+  const shutdown = () => {
+    server.close();
+    db.end();
+  };
+
+  process.on('SIGTERM', shutdown);
+  process.on('SIGINT', shutdown);
 }
 
 export default app;

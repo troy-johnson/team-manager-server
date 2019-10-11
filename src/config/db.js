@@ -8,8 +8,22 @@ const connection = mysql.createConnection({
   database: process.env.DB_DATABASE
 });
 
-connection.connect((err) => {
+const query = (...args) => new Promise((resolve, reject) => {
+  connection.query(...args, (err, result) => {
+    if (err) {
+      return reject(err);
+    }
+
+    return resolve(result);
+  });
+});
+
+export const connect = () => connection.connect((err) => {
   if (err) throw err;
 });
 
-export default connection;
+const publicAPI = {
+  query,
+};
+
+export default publicAPI;
