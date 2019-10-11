@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS user (
   full_name varchar(80) DEFAULT NULL,
   phone_number varchar(30) DEFAULT NULL,
   email_address varchar(40) NOT NULL,
-  UNIQUE (user_email_address),
+  UNIQUE (email_address),
   PRIMARY KEY (user_id)
 ) ENGINE=INNODB;
 
